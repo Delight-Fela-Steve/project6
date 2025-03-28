@@ -3,7 +3,7 @@ pipeline {
     environment{
         FLASK_ARCHIVE_NAME="flask_${env.BUILD_TAG}.tar.gz"
         NODE_ARCHIVE_NAME="node_${env.BUILD_TAG}.tar.gz"
-        BUCKET_NAME="project6-dm"
+        BUCKET_NAME="s3://project6-dm"
     }
 
     stages {
