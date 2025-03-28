@@ -2,7 +2,7 @@ pipeline {
     agent {label 'node1'}
     environment{
         FLASK_ARCHIVE_NAME="flask_${env.BUILD_TAG}.tar.gz"
-        NODE_ARCHIVE_NAME="flask_${env.BUILD_TAG}.tar.gz"
+        NODE_ARCHIVE_NAME="node_${env.BUILD_TAG}.tar.gz"
     }
 
     stages {
