@@ -10,12 +10,11 @@ pipeline {
             steps {
                 script{
                     sh'''
-                    #!/bin/bash
                     cd flask_app
 
                     python3 -m venv venv
 
-                    source venv/bin/activate
+                    . venv/bin/activate
 
                     pip install -r requirements.txt
 
