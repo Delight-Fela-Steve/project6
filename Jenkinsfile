@@ -11,7 +11,15 @@ pipeline {
                 script{
                     sh'''
                     cd flask_app
+
+                    python3 -m venv venv
+
+                    venv/bin/activate
+
+                    pip install -r requirements.txt
+
                     touch ${FLASK_ARCHIVE_NAME}
+
                     tar --exclude=${FLASK_ARCHIVE_NAME} -czvf ../${FLASK_ARCHIVE_NAME} .
                     '''
                 }
@@ -19,7 +27,11 @@ pipeline {
                 script{
                     sh'''
                     cd node_app
+
+                    npm install
+
                     touch ${NODE_ARCHIVE_NAME}
+                    
                     tar --exclude=${NODE_ARCHIVE_NAME} -czvf ../${NODE_ARCHIVE_NAME} .
                     '''
                 }
