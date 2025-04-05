@@ -1,0 +1,9 @@
+- name: App Deployment
+  hosts: centos
+  become: true
+  roles:
+    - install_flask
+    - install_node
+    - install_postgres
+    # - start_flask_service
+    # - start_node_service

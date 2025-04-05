@@ -1,0 +1,11 @@
+- include_role:
+    name: update_cache
+
+
+- name: Install Python
+  yum:
+    name:
+      - python
+      - python3-pip
+    state: latest
+    when: ansible_distribution == "CentOs"

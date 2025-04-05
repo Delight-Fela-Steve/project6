@@ -1,0 +1,11 @@
+- include_role:
+    name: update_cache
+
+
+- name: Install Node
+  yum:
+    name:
+      - node
+      - npm
+    state: latest
+    when: ansible_distribution == "CentOs"

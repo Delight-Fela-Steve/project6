@@ -1,0 +1,10 @@
+- include_role:
+    name: update_cache
+
+
+- name: Install Postgres
+  yum:
+    name:
+      - postgresql
+    state: latest
+    when: ansible_distribution == "CentOs"

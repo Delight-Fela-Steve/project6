@@ -49,7 +49,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh '''
+                cd deployment
+                ansible-playbook -i aws_ec2.yml playbook.yml
+                '''
             }
         }
     }
