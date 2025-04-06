@@ -6,7 +6,7 @@
 - name: Get Flask Artifact From S3 Bucket
   amazon.aws.s3_object:
     bucket: '{{BUCKET_NAME}}'
-    object: '{{ARCHIVE_NAME}}'
+    object: '{{FLASK_ARCHIVE_NAME}}'
     dest: /tmp/flask-app/{{FLASK_ARCHIVE_NAME}}
     mode: get
   delegate_to: localhost
