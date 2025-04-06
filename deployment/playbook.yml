@@ -1,6 +1,8 @@
 - name: App Deployment
   hosts: centos amazon
   become: true
+  vars_files:
+    - vars.yml
   roles:
     - install_flask
     - install_node
