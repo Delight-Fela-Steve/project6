@@ -1,0 +1,54 @@
+- include_role:
+    name: copy_app
+
+- name: Create Flask Service
+  copy:
+    dest: /etc/systemd/system/flask-app.service
+    content: |
+      [Unit]
+      Description = Flask App
+      After = network.target
+
+      [Service]
+      WorkingDirectory = /opt/app
+      ExecStart = python3 /opt/app/app.py
+      Restart = always
+
+      StandardOutput = append:/var/log/flask-app.log
+      StandardError = append:/var/log/flask-error.log
+
+      [Install]
+      WantedBy = multi_user.target
+
+- name: Create Node Service
+  copy:
+    dest: /etc/systemd/system/node-app.service
+    content: |
+      [Unit]
+      Description = Node App
+      After = network.target
+
+      [Service]
+      WorkingDirectory = /opt/app
+      ExecStart = node /opt/app/index.js
+      Restart = always
+
+      StandardOutput = append:/var/log/node-app.log
+      StandardError = append:/var/log/node-error.log
+
+      [Install]
+      WantedBy = multi_user.target
+
+- name: Reload Systemd and Start Flask App
+  systemd:
+    daemon_reload: yes
+    name: flask-app
+    state: restarted
+    enabled: yes
+
+- name: Reload Systemd and Start Node App
+  systemd:
+    daemon_reload: yes
+    name: node-app
+    state: restarted
+    enabled: yes
