@@ -5,4 +5,5 @@ hostname:
   -ip-address
 
 groups:
-  centos: "'centos' in tags.OS" 
+  centos: "'centos' in tags.OS"
+  amazon: "'amazon' in tags.OS"
