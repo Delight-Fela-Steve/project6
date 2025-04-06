@@ -6,6 +6,7 @@
   yum:
     name:
       - postgresql15
+      - postgresql15-server
       - python3-psycopg2
     state: latest
   when: ansible_distribution == "CentOs" or ansible_distribution == "Amazon"
