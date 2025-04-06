@@ -11,6 +11,18 @@
     state: latest
   when: ansible_distribution == "CentOs" or ansible_distribution == "Amazon"
 
+- name: Check if postgresql is initialized
+  state:
+    path: /var/lib/pgsql/data/pg_hba.conf
+  register: postgres_data
 
-- name: "Start and enable postgresql15"
-  service: "name=postgresql-15 state=started enabled=yes"
+- name: Initialize PostgresSQL
+  shell: "postgresql-setup initdb"
+  when: not postgres_data.stat.exists
+
+
+- name: "Start and enable postgresql"
+  service:
+    name: postgresql 
+    state: started 
+    enabled: true
