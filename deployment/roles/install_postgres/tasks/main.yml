@@ -3,7 +3,7 @@
 
 
 - name: Install Postgres
-  dnf:
+  ansible.builtin.yum:
     name:
       - postgresql-server
       - postgresql
