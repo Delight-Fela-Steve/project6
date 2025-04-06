@@ -1,7 +1,6 @@
 - name: App Deployment
   hosts: centos amazon
   become: true
-  become_method: sudo
   vars_files:
     - vars.yml
   roles:
