@@ -1,5 +1,5 @@
 - name: App Deployment
-  hosts: centos
+  hosts: centos amazon
   become: true
   roles:
     - install_flask
