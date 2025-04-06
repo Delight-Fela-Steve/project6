@@ -8,5 +8,6 @@
     - install_node
     - install_postgres
     - copy_app
+    - init_db
     - start_flask_service
     - start_node_service

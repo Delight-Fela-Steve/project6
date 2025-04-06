@@ -1,0 +1,10 @@
+- include_role:
+    name: install_postgres
+
+- name: Create db user
+  community.postgresql.postgresql_user:
+    state: present
+    name: "{{ db_user }}"
+    password: "{{ db_password}}"
+  become: true
+  become_user: postgres
