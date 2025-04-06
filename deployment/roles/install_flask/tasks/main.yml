@@ -7,4 +7,4 @@
     name:
       - python3-flask
     state: present
-    when: ansible_distribution == "CentOs" or ansible_distribution == "Amazon"
+  when: ansible_distribution == "CentOs" or ansible_distribution == "Amazon"
