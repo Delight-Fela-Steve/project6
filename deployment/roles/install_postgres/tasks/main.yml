@@ -13,4 +13,4 @@
 
 
 - name: "Start and enable postgresql15"
-  service: "name=postgresql state=started enabled=yes"
+  service: "name=postgresql-15 state=started enabled=yes"
