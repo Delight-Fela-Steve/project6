@@ -1,0 +1,45 @@
+- name: Create App Directory
+  file:
+    path: /opt/app
+    state: directory
+
+- name: Get Flask Artifact From S3 Bucket
+  amazon.aws.s3_object:
+    bucket: '{{BUCKET_NAME}}'
+    object: '{{ARCHIVE_NAME}}'
+    dest: /tmp/flask-app/{{FLASK_ARCHIVE_NAME}}
+    mode: get
+  delegate_to: localhost
+  become: false
+
+- name: Copy Artifact To The Servers
+  copy:
+    src: /tmp/flask/{{NODE_ARCHIVE_NAME}}
+    dest: /opt/app/flask-app.tar.gz
+
+- name: Unzip Artifact
+  unarchive:
+    src: /opt/app/flask-app.tar.gz
+    dest: /opt/app
+    remote_src: yes
+
+- name: Get Node Artifact From S3 Bucket
+  amazon.aws.s3_object:
+    bucket: '{{BUCKET_NAME}}'
+    object: '{{NODE_ARCHIVE_NAME}}'
+    dest: /tmp/node-app/{{NODE_ARCHIVE_NAME}}
+    mode: get
+  delegate_to: localhost
+  become: false
+
+
+- name: Copy Artifact To The Servers
+  copy:
+    src: /tmp/flask/{{NODE_ARCHIVE_NAME}}
+    dest: /opt/app/node-app.tar.gz
+
+- name: Unzip Artifact
+  unarchive:
+    src: /opt/app/node-app.tar.gz
+    dest: /opt/app
+    remote_src: yes
