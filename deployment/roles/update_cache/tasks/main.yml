@@ -1,4 +1,4 @@
 - name: Update Cache
   yum:
     update_cache: yes
-  when: ansible_distribution == "CentOs"
+  when: ansible_distribution == "CentOs" or ansible_distribution == "Amazon"
