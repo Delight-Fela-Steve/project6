@@ -1,0 +1,28 @@
+- include_role:
+    name: copy_app
+
+- name: Create Node Service
+  copy:
+    dest: /etc/systemd/system/node-app.service
+    content: |
+      [Unit]
+      Description = Node App
+      After = network.target
+
+      [Service]
+      WorkingDirectory = /opt/app
+      ExecStart = node /opt/app/index.js
+      Restart = always
+
+      StandardOutput = append:/var/log/node-app.log
+      StandardError = append:/var/log/node-error.log
+
+      [Install]
+      WantedBy = multi_user.target
+
+- name: Reload Systemd and Start Node App
+  systemd:
+    daemon_reload: yes
+    name: node-app
+    state: restarted
+    enabled: yes
