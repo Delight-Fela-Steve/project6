@@ -6,5 +6,5 @@
   yum:
     name:
       - python3-flask
-    state: latest
+    state: present
     when: ansible_distribution == "CentOs"
