@@ -50,10 +50,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                    sh '''
+                    sh """
                     cd deployment
-                    ansible-playbook -i aws_ec2.yml playbook.yml --extra-vars 'FLASK_ARCHIVE_NAME=${FLASK_ARCHIVE_NAME} NODE_ARCHIVE_NAME=${NODE_ARCHIVE_NAME}'
-                    '''
+                    ansible-playbook -i aws_ec2.yml playbook.yml --extra-vars "FLASK_ARCHIVE_NAME='${FLASK_ARCHIVE_NAME}' NODE_ARCHIVE_NAME='${NODE_ARCHIVE_NAME}'"
+                    """
                 }
 
             }
