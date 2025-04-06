@@ -3,7 +3,7 @@
 
 
 - name: Install Postgres
-  yum:
+  dnf:
     name:
       - postgresql-server
       - postgresql
