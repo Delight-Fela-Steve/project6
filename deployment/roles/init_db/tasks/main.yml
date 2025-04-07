@@ -22,3 +22,15 @@
     grant_option: false
   become: true
   become_user: postgres
+
+- name: "Allow md5 connection for the db user"
+  postgresql_pg_hba:
+    dest: "~/data/pg_hba.conf"
+    contype: host
+    databases: all
+    method: md5
+    users: "{{ db_user }}"
+    create: true
+  become: true
+  become_user: postgres
+  notify: restart postgres
