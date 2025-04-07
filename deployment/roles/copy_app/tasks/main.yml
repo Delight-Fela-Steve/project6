@@ -10,7 +10,7 @@
 - name: Copy Repository access key
   copy:
     src: ~/.ssh/server-key
-    dest: ~/.ssh/server-key.pem
+    dest: ~/.ssh/server-key
     mode: "400"
 
 - name: Clone Repository
