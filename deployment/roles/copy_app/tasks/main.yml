@@ -11,7 +11,7 @@
   copy:
     src: ~/.ssh/server-key.pem
     dest: ~/.ssh/server-key.pem
-    remote_src: true
+    mode: "400"
 
 - name: Clone Repository
   git:
