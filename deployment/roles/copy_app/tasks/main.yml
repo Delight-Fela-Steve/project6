@@ -18,7 +18,9 @@
     repo: https://github.com/Delight-Fela-Steve/project6.git
     dest: /opt/app
 
-
+- name: Install Node App Dependencies
+  community.general.npm:
+    path: /opt/app/node_app
 
 # - name: Get Flask Artifact From S3 Bucket
 #   amazon.aws.s3_object:
