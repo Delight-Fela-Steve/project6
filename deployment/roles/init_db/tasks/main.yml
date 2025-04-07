@@ -9,6 +9,10 @@
   become: true
   become_user: postgres
 
+- name: Create db
+  become_user: postgres
+  shell: psql -f /opt/app/db/init.sql
+
 - name: Grant user access to db
   community.postgresql.postgresql_privs:
     type: database

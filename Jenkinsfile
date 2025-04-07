@@ -7,46 +7,46 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
-            steps {
-                script{
-                    sh'''
-                    cd flask_app
+        // stage('Build') {
+        //     steps {
+        //         script{
+        //             sh'''
+        //             cd flask_app
 
-                    python3 -m venv venv
+        //             python3 -m venv venv
 
-                    . venv/bin/activate
+        //             . venv/bin/activate
 
-                    pip install -r requirements.txt
+        //             pip install -r requirements.txt
 
-                    touch ${FLASK_ARCHIVE_NAME}
+        //             touch ${FLASK_ARCHIVE_NAME}
 
-                    tar --exclude=${FLASK_ARCHIVE_NAME} -czvf ../${FLASK_ARCHIVE_NAME} .
-                    '''
-                }
+        //             tar --exclude=${FLASK_ARCHIVE_NAME} -czvf ../${FLASK_ARCHIVE_NAME} .
+        //             '''
+        //         }
 
-                script{
-                    sh'''
-                    cd node_app
+        //         script{
+        //             sh'''
+        //             cd node_app
 
-                    npm install
+        //             npm install
 
-                    touch ${NODE_ARCHIVE_NAME}
+        //             touch ${NODE_ARCHIVE_NAME}
                     
-                    tar --exclude=${NODE_ARCHIVE_NAME} -czvf ../${NODE_ARCHIVE_NAME} .
-                    '''
-                }
-            }
-        }
-        stage('Upload Artifact') {
-            steps {
-                sh '''
-                aws s3 cp ${FLASK_ARCHIVE_NAME} ${BUCKET_NAME}
+        //             tar --exclude=${NODE_ARCHIVE_NAME} -czvf ../${NODE_ARCHIVE_NAME} .
+        //             '''
+        //         }
+        //     }
+        // }
+        // stage('Upload Artifact') {
+        //     steps {
+        //         sh '''
+        //         aws s3 cp ${FLASK_ARCHIVE_NAME} ${BUCKET_NAME}
 
-                aws s3 cp ${NODE_ARCHIVE_NAME} ${BUCKET_NAME}
-                '''
-            }
-        }
+        //         aws s3 cp ${NODE_ARCHIVE_NAME} ${BUCKET_NAME}
+        //         '''
+        //     }
+        // }
         stage('Deploy') {
             steps {
                 script{
