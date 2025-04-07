@@ -9,7 +9,7 @@
 
 - name: Copy Repository access key
   copy:
-    src: ~/.ssh/server-key.pem
+    src: ~/.ssh/server-key
     dest: ~/.ssh/server-key.pem
     mode: "400"
 
