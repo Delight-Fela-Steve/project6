@@ -7,18 +7,10 @@
     path: /opt/app
     state: directory
 
-- name: Copy Repository access key
-  copy:
-    src: ~/.ssh/server-key
-    dest: ~/.ssh/server-key
-    owner: root
-    mode: "400"
-
 - name: Clone Repository
   git:
-    repo: git@github.com:Delight-Fela-Steve/project6.git
+    repo: https://github.com/Delight-Fela-Steve/project6.git
     dest: /opt/app
-    key_file: ~/.ssh/server-key
 
 
 
