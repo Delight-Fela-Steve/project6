@@ -8,3 +8,12 @@
     password: "{{ db_password}}"
   become: true
   become_user: postgres
+
+- name: Grant user access to db
+  community.postgresql.postgresql_privs:
+    type: database
+    database: "{{ db_name }}"
+    privs: all
+    grant_options: false
+    become: true
+    become_user: postgres
