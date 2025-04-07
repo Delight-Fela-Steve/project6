@@ -1,0 +1,9 @@
+- include_role:
+    name: update_cache
+
+
+- name: Install Node
+  yum:
+    name: git
+    state: latest
+  when: ansible_distribution == "CentOs" or ansible_distribution == "Amazon"
