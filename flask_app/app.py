@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_NAME = os.getenv("DB_NAME", "sharedappdb")
-DB_USER = os.getenv("DB_USER", "devops")
+DB_USER = os.getenv("DB_USER", "postgres")
 DB_PASS = os.getenv("DB_PASS", "password")
 
 
