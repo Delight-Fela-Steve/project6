@@ -11,7 +11,7 @@
 
       [Service]
       WorkingDirectory = /opt/app
-      ExecStart = node /opt/app/index.js
+      ExecStart = node /opt/app/node_app/index.js
       Restart = always
 
       StandardOutput = append:/var/log/node-app.log

@@ -11,7 +11,7 @@
 
       [Service]
       WorkingDirectory = /opt/app
-      ExecStart = python3 /opt/app/app.py
+      ExecStart = python3 /opt/app/flask_app/app.py
       Restart = always
 
       StandardOutput = append:/var/log/flask-app.log
