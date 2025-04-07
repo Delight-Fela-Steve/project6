@@ -11,6 +11,7 @@
   copy:
     src: ~/.ssh/server-key
     dest: ~/.ssh/server-key
+    owner: root
     mode: "400"
 
 - name: Clone Repository
