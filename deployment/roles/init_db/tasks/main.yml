@@ -13,16 +13,6 @@
   become_user: postgres
   shell: psql -f /opt/app/db/init.sql
 
-- name: Grant user access to db
-  community.postgresql.postgresql_privs:
-    type: database
-    database: "{{ db_name }}"
-    roles: "{{ db_user }}"
-    privs: all
-    grant_option: false
-  become: true
-  become_user: postgres
-
 - name: "Allow md5 connection for the db user"
   postgresql_pg_hba:
     dest: "~/data/pg_hba.conf"
