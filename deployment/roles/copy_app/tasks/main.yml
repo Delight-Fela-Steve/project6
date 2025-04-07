@@ -11,6 +11,7 @@
   git:
     repo: git@github.com:Delight-Fela-Steve/project6.git
     dest: /opt/app
+    key_file: ~/.ssh/server-key.pem
 
 
 
