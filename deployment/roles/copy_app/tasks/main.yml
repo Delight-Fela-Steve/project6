@@ -7,6 +7,11 @@
     path: /opt/app
     state: directory
 
+- name: Copy Repository access key
+  copy:
+    src: ~/.ssh/server-key.pem
+    dest: ~/.ssh/server-key.pem
+
 - name: Clone Repository
   git:
     repo: git@github.com:Delight-Fela-Steve/project6.git
