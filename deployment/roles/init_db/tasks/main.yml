@@ -13,6 +13,7 @@
   community.postgresql.postgresql_privs:
     type: database
     database: "{{ db_name }}"
+    roles: "{{ db_user }}"
     privs: all
     grant_options: false
     become: true
