@@ -33,8 +33,3 @@
     create: true
   become: true
   become_user: postgres
-  notify: restart postgres
-
-  handlers:
-    - name: restart postgres
-      service: name=postgresql state=restarted
